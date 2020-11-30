@@ -11,6 +11,7 @@ public class Summa extends Komento {
     private JTextField tuloskentta;
     private JTextField syotekentta;
     private Sovelluslogiikka sovellus;
+    private int vanhaTulos, vanhaSyote;
 
     public Summa(JTextField tuloskentta, JTextField syotekentta, JButton nollaa, JButton undo, Sovelluslogiikka sovellus) {
         this.tuloskentta = tuloskentta;
@@ -40,10 +41,15 @@ public class Summa extends Komento {
             nollaa.setEnabled(true);
         }
         undo.setEnabled(true);
+
+        vanhaTulos = laskunTulos - arvo;
+        vanhaSyote = arvo;
     }
 
     @Override
     public void peru() {
+        tuloskentta.setText("" + vanhaTulos);
+        syotekentta.setText("" + vanhaSyote);
 
     }
 }

@@ -11,6 +11,7 @@ public class Erotus extends Komento{
     private JTextField tuloskentta;
     private JTextField syotekentta;
     private Sovelluslogiikka sovellus;
+    private int vanhaTulos, vanhaSyote;
 
 
     public Erotus(JTextField tuloskentta, JTextField syotekentta, JButton nollaa, JButton undo, Sovelluslogiikka sovellus) {
@@ -22,6 +23,7 @@ public class Erotus extends Komento{
     }
 
     public void suorita() {
+
         int arvo = 0;
 
         try {
@@ -33,6 +35,7 @@ public class Erotus extends Komento{
         sovellus.miinus(arvo);
         int laskunTulos = sovellus.tulos();
 
+
         tuloskentta.setText("" + laskunTulos);
         if ( laskunTulos==0) {
             nollaa.setEnabled(false);
@@ -41,10 +44,15 @@ public class Erotus extends Komento{
         }
         undo.setEnabled(true);
 
+        vanhaTulos = laskunTulos + arvo;
+        vanhaSyote = arvo;
+
     }
 
     @Override
     public void peru() {
+        tuloskentta.setText("" + vanhaTulos);
+        syotekentta.setText("" + vanhaSyote);
 
     }
 }
