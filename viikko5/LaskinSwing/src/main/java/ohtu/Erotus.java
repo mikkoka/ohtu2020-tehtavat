@@ -44,15 +44,16 @@ public class Erotus extends Komento{
         }
         undo.setEnabled(true);
 
-        vanhaTulos = laskunTulos + arvo;
+        vanhaTulos = laskunTulos;
         vanhaSyote = arvo;
 
     }
 
     @Override
     public void peru() {
-        tuloskentta.setText("" + vanhaTulos);
+        tuloskentta.setText("" + (vanhaTulos + vanhaSyote));
         syotekentta.setText("" + vanhaSyote);
+        sovellus.plus(vanhaSyote);
 
     }
 }

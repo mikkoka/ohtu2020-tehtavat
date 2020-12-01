@@ -27,8 +27,9 @@ public class Tapahtumankuuntelija implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent ae) {
 
-        if (ae.getSource().equals(undo)) edellinen.peru();
-        else {
+        if (ae.getSource().equals(undo)) {
+            if (!edellinen.equals(null)) edellinen.peru();
+        } else {
             Komento k = komennot.get(ae.getSource());
             k.suorita();
             edellinen = k;

@@ -2,6 +2,7 @@ package ohtu;
 
 import javax.swing.*;
 import java.util.HashMap;
+import java.util.regex.Pattern;
 
 public class Summa extends Komento {
 
@@ -42,14 +43,27 @@ public class Summa extends Komento {
         }
         undo.setEnabled(true);
 
-        vanhaTulos = laskunTulos - arvo;
+        vanhaTulos = laskunTulos;
         vanhaSyote = arvo;
     }
 
     @Override
     public void peru() {
-        tuloskentta.setText("" + vanhaTulos);
+        Pattern p = Pattern.compile(" /^\\d+$/");
+
+        if (p.matcher(tuloskentta.getText()).find()) {
+            sovellus.nollaa();
+            sovellus.plus(Integer.parseInt(tuloskentta.getText()));
+        }
+        tuloskentta.setText("" + (vanhaTulos - vanhaSyote));
         syotekentta.setText("" + vanhaSyote);
+        sovellus.miinus(vanhaSyote);
+
+
+
+
+
+
 
     }
 }

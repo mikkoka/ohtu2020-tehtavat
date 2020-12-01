@@ -23,8 +23,16 @@ public class Nollaa extends Komento {
 
     @Override
     public void suorita() {
-        vanhaSyote = Integer.parseInt(syotekentta.getText());
-        vanhaTulos = Integer.parseInt(tuloskentta.getText());
+        vanhaSyote = 0;
+        vanhaTulos = 0;
+        try {
+            vanhaSyote = Integer.parseInt(syotekentta.getText());
+        } catch (Exception e) {
+        }
+        try {
+            vanhaTulos = Integer.parseInt(tuloskentta.getText());
+        } catch (Exception e) {
+        }
         syotekentta.setText("");
         tuloskentta.setText("");
         sovellus.nollaa();
@@ -35,6 +43,7 @@ public class Nollaa extends Komento {
     public void peru() {
         tuloskentta.setText("" + vanhaTulos);
         syotekentta.setText("" + vanhaSyote);
+        sovellus.plus(vanhaTulos);
 
     }
 }
